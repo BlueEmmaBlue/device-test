@@ -32,7 +32,7 @@ CREATE TABLE `sz_data_record` (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `file_path` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of sz_data_record
@@ -57,7 +57,7 @@ CREATE TABLE `sz_device` (
   `upper_threshold` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '阈值上限',
   `lower_threshold` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '阈值下限',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of sz_device
@@ -82,13 +82,13 @@ CREATE TABLE `sz_user` (
   `enabled` tinyint NOT NULL DEFAULT '1' COMMENT '是否启用',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_username_uq` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of sz_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sz_user` VALUES (1, 'admin', '', '$2a$10$PrOk9.iRZ5GqTUlvLlhoFO5rNDfcNVTxu2VqIINmelzqmOV0rvaRi', 1, '2023-09-08 17:03:46', 1, '2023-09-08 17:03:46', 'NORMAL', 1);
+INSERT INTO `sz_user` VALUES (1, 'admin', 'admin', 'admin', 1, '2023-09-08 17:03:46', 1, '2023-09-08 17:03:46', 'ADMIN', 1);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

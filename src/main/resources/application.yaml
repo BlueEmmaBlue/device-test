@@ -4,7 +4,7 @@ server:
 
 logging:
   level:
-    org: debug
+    org: info
   file:
     name: main.log
   logback:

@@ -8,8 +8,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
@@ -20,13 +19,13 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-    private static final String[] STATIC_RESOURCE_PATTERNS = new String[]{"/**/*.js","/**/*.css","/**/*.html"};
+    private static final String[] STATIC_RESOURCE_PATTERNS = new String[]{"/**/*.js", "/**/*.css", "/**/*.html"};
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    @SuppressWarnings("deprecation")
+    public PasswordEncoder passwordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
     }
-
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration) throws Exception {
@@ -40,10 +39,10 @@ public class SecurityConfig {
                 .cors().disable()
                 .authorizeHttpRequests(authorize ->
                         authorize.antMatchers("/api/szUser/**").permitAll()
-                                .antMatchers("/api/auth/login","/api/auth/signup").permitAll()
-                                .antMatchers("/","/error","/**/swagger-ui*").permitAll()
+                                .antMatchers("/api/auth/login", "/api/auth/signup").permitAll()
+                                .antMatchers("/", "/error", "/**/swagger-ui*").permitAll()
                                 // swagger and api docs config
-                                .antMatchers("/swagger*", "/webjars/**", "/swagger-resources/**","/v2/**")
+                                .antMatchers("/swagger*", "/webjars/**", "/swagger-resources/**", "/v2/**")
                                 .permitAll()
                                 .antMatchers(STATIC_RESOURCE_PATTERNS).permitAll()
                                 .anyRequest().authenticated()
