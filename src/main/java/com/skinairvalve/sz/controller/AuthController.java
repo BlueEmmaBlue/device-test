@@ -2,7 +2,7 @@ package com.skinairvalve.sz.controller;
 
 import com.skinairvalve.sz.dto.ApiResult;
 import com.skinairvalve.sz.dto.user.LoginDto;
-import com.skinairvalve.sz.dto.user.SignUpDto;
+import com.skinairvalve.sz.dto.user.SzUserInfoDto;
 import com.skinairvalve.sz.service.ISzUserService;
 import com.skinairvalve.sz.service.UserDetailService;
 import io.swagger.annotations.Api;
@@ -56,17 +56,6 @@ public class AuthController {
         securityContextHolderStrategy.setContext(context);
         securityContextRepository.saveContext(context, request, response);
         return ApiResult.ok("User signed-in successfully!.");
-    }
-
-    @PostMapping("/signup")
-    public ApiResult<String> registerUser(@Valid  @RequestBody SignUpDto signUpDto){
-
-        // add check for username exists in a DB
-        if(! szUserService.addUser(userDetailService.getCurrentUser(),signUpDto)){
-            return ApiResult.fail("Username is already taken!");
-        }
-        return ApiResult.ok("User registered successfully");
-
     }
 
     @ApiOperation(value = "get current user")

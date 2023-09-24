@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
-import javax.validation.constraints.NotBlank;
-
 /**
  * @author zhangwei zhangwei06@kuaishou.com
  * @create on 2023/9/25-12:15 AM
@@ -16,11 +14,11 @@ import javax.validation.constraints.NotBlank;
 public class SzUserInfo {
     private String name;
 
-    @NotBlank
     private String username;
 
-    @NotBlank
-    private String role;
+    private String accountRole;
+
+    private String password;
 
     public SzUserInfo(SzUser szUser){
         BeanUtils.copyProperties(szUser,this);

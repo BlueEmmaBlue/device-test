@@ -7,4 +7,5 @@ public class Constants {
     public static final int ADMIN_ID = 1;
 
     public static final int ENABLE = 1;
+    public static final int DISABLE = 0;
 }

@@ -22,7 +22,7 @@ public class BaseUserInfo {
     private String password;
 
     @NotBlank
-    private String role;
+    private String accountRole;
 
     public BaseUserInfo(SzUser szUser){
         BeanUtils.copyProperties(szUser,this);
