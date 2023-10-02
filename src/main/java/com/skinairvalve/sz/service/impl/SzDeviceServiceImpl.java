@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -104,5 +105,16 @@ public class SzDeviceServiceImpl extends ServiceImpl<SzDeviceMapper, SzDevice> i
         List<SzDevice> list =
                 list(queryWrapper);
         return (list != null && (! list.isEmpty())) ? list.get(0) : null;
+    }
+
+    @Override
+    public List<SzDevice> selectByDeviceIdList(List<String> deviceIdList) {
+        if(deviceIdList == null || deviceIdList.isEmpty()){
+            return Collections.emptyList();
+        }
+        LambdaQueryWrapper<SzDevice> queryWrapper =
+                new LambdaQueryWrapper<>();
+        queryWrapper.in(SzDevice::getDeviceId,deviceIdList);
+        return list(queryWrapper);
     }
 }

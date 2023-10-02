@@ -1,6 +1,7 @@
-package com.skinairvalve.sz;
+package com.skinairvalve.sz.services;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.skinairvalve.sz.DeviceTestApplicationTests;
 import com.skinairvalve.sz.dto.device.AddDeviceInfo;
 import com.skinairvalve.sz.dto.device.BaseDeviceInfo;
 import com.skinairvalve.sz.dto.device.SzDeviceSearchParam;
@@ -10,9 +11,6 @@ import com.skinairvalve.sz.service.ISzDeviceTypeService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.context.ContextConfiguration;
-import uk.co.jemos.podam.api.PodamFactory;
-import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -21,7 +19,7 @@ import java.util.Map;
  * @create on 2023/10/2-3:22 PM
  */
 @Slf4j
-public class SzDeviceTests extends DeviceTestApplicationTests{
+public class SzDeviceTests extends DeviceTestApplicationTests {
     @Resource
     private ISzDeviceService deviceService;
 
@@ -41,6 +39,7 @@ public class SzDeviceTests extends DeviceTestApplicationTests{
         AddDeviceInfo baseDeviceInfo = podamFactory
                 .manufacturePojo(AddDeviceInfo.class);
         Assertions.assertNotNull(baseDeviceInfo.getDeviceId());
+        baseDeviceInfo.setDeviceId("device_0");
         baseDeviceInfo.setDeviceType("device_0");
         Assertions.assertTrue(deviceService.addDevice(baseDeviceInfo));
         Assertions.assertFalse(deviceService.addDevice(baseDeviceInfo));

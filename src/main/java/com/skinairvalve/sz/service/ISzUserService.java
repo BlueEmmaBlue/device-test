@@ -7,6 +7,7 @@ import com.skinairvalve.sz.dto.user.SzUserInfoDto;
 import com.skinairvalve.sz.dto.user.SzUserSearchParam;
 import com.skinairvalve.sz.entity.SzUser;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -34,4 +35,6 @@ public interface ISzUserService extends IService<SzUser> {
     Page<SzUserInfo> searchUser(SzUser currentUser, SzUserSearchParam szUserSearchParam);
 
     void updateLoginTime(String username);
+
+    List<SzUser> selectByUsernameList(List<String> usernameList);
 }

@@ -19,6 +19,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -135,6 +136,17 @@ public class SzUserServiceImpl extends ServiceImpl<SzUserMapper, SzUser> impleme
 
             updateById(currentUser);
         }
+    }
+
+    @Override
+    public List<SzUser> selectByUsernameList(List<String> usernameList) {
+        if(usernameList == null || usernameList.isEmpty()){
+            return Collections.emptyList();
+        }
+        LambdaQueryWrapper<SzUser> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.in(SzUser::getUsername,usernameList)
+                .eq(SzUser::getEnabled,Constants.ENABLE);
+        return list(queryWrapper);
     }
 
     private void checkAdmin(SzUser currentUser) {

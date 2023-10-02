@@ -39,7 +39,7 @@ public class MyBatisPlusGenerator {
                             .pathInfo(Collections.singletonMap(OutputFile.xml, xmlOutput)); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("sz_device_type"); // 设置需要生成的表名
+                    builder.addInclude("sz_data_record"); // 设置需要生成的表名
                     builder.controllerBuilder()
                             .enableFileOverride()
                             .mapperBuilder()

@@ -1,6 +1,7 @@
-package com.skinairvalve.sz;
+package com.skinairvalve.sz.services;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.skinairvalve.sz.DeviceTestApplicationTests;
 import com.skinairvalve.sz.dto.user.SzUserInfo;
 import com.skinairvalve.sz.dto.user.SzUserSearchParam;
 import com.skinairvalve.sz.entity.SzUser;
@@ -15,7 +16,7 @@ import javax.annotation.Resource;
  * @create on 2023/10/2-2:20 PM
  */
 @Slf4j
-public class SzUserServiceTests extends DeviceTestApplicationTests{
+public class SzUserServiceTests extends DeviceTestApplicationTests {
     @Resource
     private ISzUserService szUserService;
 

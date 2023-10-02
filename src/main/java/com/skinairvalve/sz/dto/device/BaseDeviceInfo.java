@@ -36,6 +36,8 @@ public class BaseDeviceInfo {
     private String lowerThreshold;
 
     public BaseDeviceInfo(SzDevice szDevice){
-        BeanUtils.copyProperties(szDevice,this);
+        if(szDevice != null) {
+            BeanUtils.copyProperties(szDevice, this);
+        }
     }
 }

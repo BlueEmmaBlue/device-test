@@ -8,6 +8,9 @@ import com.skinairvalve.sz.dto.device.SzDeviceSearchParam;
 import com.skinairvalve.sz.dto.device.UpdateDeviceInfo;
 import com.skinairvalve.sz.entity.SzDevice;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  *  服务类
@@ -24,4 +27,6 @@ public interface ISzDeviceService extends IService<SzDevice> {
     Page<BaseDeviceInfo> searchDevice(SzDeviceSearchParam szDeviceSearchParam);
 
     SzDevice selectByDeviceId(String deviceId);
+
+    List<SzDevice> selectByDeviceIdList(List<String> deviceIdList);
 }
