@@ -1,7 +1,13 @@
 package com.skinairvalve.sz.controller;
 
+import com.skinairvalve.sz.dto.ApiResult;
+import com.skinairvalve.sz.service.ISzDeviceService;
+import com.skinairvalve.sz.service.impl.SzDeviceServiceImpl;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -14,5 +20,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/szDevice")
 public class SzDeviceController {
+
+    @Resource
+    private ISzDeviceService deviceService;
 
 }

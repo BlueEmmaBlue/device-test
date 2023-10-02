@@ -55,6 +55,8 @@ public class AuthController {
         context.setAuthentication(authentication);
         securityContextHolderStrategy.setContext(context);
         securityContextRepository.saveContext(context, request, response);
+
+        szUserService.updateLoginTime(loginDto.getUsername());
         return ApiResult.ok("User signed-in successfully!.");
     }
 

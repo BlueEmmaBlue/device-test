@@ -1,8 +1,11 @@
 package com.skinairvalve.sz.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.skinairvalve.sz.dto.ApiResult;
 import com.skinairvalve.sz.dto.user.SzUserInfo;
 import com.skinairvalve.sz.dto.user.SzUserInfoDto;
+import com.skinairvalve.sz.dto.user.SzUserSearchParam;
 import com.skinairvalve.sz.entity.SzUser;
 import com.skinairvalve.sz.service.ISzUserService;
 import com.skinairvalve.sz.service.UserDetailService;
@@ -38,6 +41,12 @@ public class SzUserController {
                 .stream()
                 .map(SzUserInfo::new)
                 .collect(Collectors.toList()));
+    }
+
+    @PostMapping("/search")
+    public ApiResult<Page<SzUserInfo>> searchUserList(@RequestBody SzUserSearchParam szUserSearchParam) {
+        return ApiResult.ok(szUserService
+                .searchUser(userDetailService.getCurrentUser(),szUserSearchParam));
     }
 
     @PostMapping("/add")
