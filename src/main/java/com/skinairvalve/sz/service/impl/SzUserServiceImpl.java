@@ -1,7 +1,6 @@
 package com.skinairvalve.sz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.base.Preconditions;
@@ -125,7 +124,7 @@ public class SzUserServiceImpl extends ServiceImpl<SzUserMapper, SzUser> impleme
         }
         Page<SzUser> page = new Page<>(szUserSearchParam.getPageNo(), szUserSearchParam.getPageSize());
         Page<SzUser> userPage = page(page,queryWrapper);
-        return PageHelper.convertPage(userPage,SzUserInfo::fromSzUser);
+        return PageHelper.convertPage(userPage,SzUserInfo::new);
     }
 
     @Override

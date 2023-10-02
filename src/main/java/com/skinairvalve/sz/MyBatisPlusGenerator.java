@@ -15,8 +15,8 @@ public class MyBatisPlusGenerator {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost/device_test", username = "zhangwei", password = "zhangwei";
         String author = "zw";
-        String javaOutput = "/Users/zhangwei/ex/java/projects/device-test/src/main/java";
-        String xmlOutput = "/Users/zhangwei/ex/java/projects/device-test/src/main/resources/mappers";
+        String javaOutput = "/Users/zhangwei/github/device-test/src/main/java";
+        String xmlOutput = "/Users/zhangwei/github/device-test/src/main/resources/mappers";
         FastAutoGenerator.create(url, username, password)
                 .globalConfig(builder -> {
                     builder.author(author) // 设置作者
@@ -39,7 +39,7 @@ public class MyBatisPlusGenerator {
                             .pathInfo(Collections.singletonMap(OutputFile.xml, xmlOutput)); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("sz_user","sz_device","sz_data_record"); // 设置需要生成的表名
+                    builder.addInclude("sz_device_type"); // 设置需要生成的表名
                     builder.controllerBuilder()
                             .enableFileOverride()
                             .mapperBuilder()

@@ -9,4 +9,9 @@ import lombok.Data;
 public class SystemException extends RuntimeException {
     private int code;
     private String message;
+
+    public SystemException(int code,String message){
+        this.code = code;
+        this.message = message;
+    }
 }

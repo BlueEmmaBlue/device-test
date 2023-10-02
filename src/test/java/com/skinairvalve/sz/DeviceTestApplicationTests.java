@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -15,6 +17,8 @@ import java.util.List;
 @SpringBootTest
 @ActiveProfiles({"local"})
 class DeviceTestApplicationTests {
+	protected final PodamFactory podamFactory =
+			new PodamFactoryImpl();
 	@Resource
 	private ISzUserService szUserService;
 

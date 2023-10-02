@@ -84,6 +84,17 @@ CREATE TABLE `sz_user` (
   UNIQUE KEY `idx_username_uq` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+DROP TABLE IF EXISTS `sz_device_type`;
+CREATE TABLE `sz_device_type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `device_type` varchar(255) NOT NULL DEFAULT '' COMMENT '设备类型code',
+  `device_type_name` varchar(255) NOT NULL DEFAULT '' COMMENT '设备类型name',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
 -- ----------------------------
 -- Records of sz_user
 -- ----------------------------

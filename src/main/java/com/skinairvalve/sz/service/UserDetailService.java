@@ -1,7 +1,11 @@
 package com.skinairvalve.sz.service;
 
 import com.skinairvalve.sz.entity.SzUser;
+import com.skinairvalve.sz.enums.ResultEnum;
+import com.skinairvalve.sz.enums.UserRoleEnum;
+import com.skinairvalve.sz.exception.SystemException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -43,6 +47,15 @@ public class UserDetailService implements UserDetailsService {
             return szUserService.selectByUsername(username);
         }else{
             return null;
+        }
+    }
+
+    public void checkAdmin(){
+        SzUser user = getCurrentUser();
+        if(user != null && StringUtils.equals(user.getAccountRole(), UserRoleEnum.ADMIN.name())){
+            return;
+        }else{
+            throw new SystemException(ResultEnum.FAIL.getCode(), "no auth");
         }
     }
 }
