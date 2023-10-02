@@ -3,10 +3,11 @@ package com.skinairvalve.sz.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -51,6 +52,9 @@ public class SzUser implements Serializable {
 
     @ApiModelProperty("是否启用")
     private Integer enabled;
+
+    @ApiModelProperty("上次登录时间")
+    private LocalDateTime lastLoginTime;
 
     public Integer getId() {
         return id;
@@ -146,5 +150,13 @@ public class SzUser implements Serializable {
             ", accountRole = " + accountRole +
             ", enabled = " + enabled +
         "}";
+    }
+
+    public LocalDateTime getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(LocalDateTime lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 }

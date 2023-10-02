@@ -1,20 +1,25 @@
 package com.skinairvalve.sz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.base.Preconditions;
 import com.skinairvalve.sz.config.Constants;
+import com.skinairvalve.sz.dto.user.SzUserInfo;
 import com.skinairvalve.sz.dto.user.SzUserInfoDto;
+import com.skinairvalve.sz.dto.user.SzUserSearchParam;
 import com.skinairvalve.sz.entity.SzUser;
 import com.skinairvalve.sz.enums.UserRoleEnum;
 import com.skinairvalve.sz.mapper.SzUserMapper;
 import com.skinairvalve.sz.service.ISzUserService;
+import com.skinairvalve.sz.utils.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -101,6 +106,46 @@ public class SzUserServiceImpl extends ServiceImpl<SzUserMapper, SzUser> impleme
                 new LambdaQueryWrapper<>();
         queryWrapper
                 .eq(SzUser::getEnabled, Constants.ENABLE);
+        return list(queryWrapper);
+    }
+
+    @Override
+    public Page<SzUserInfo> searchUser(SzUser currentUser, SzUserSearchParam szUserSearchParam) {
+        checkAdmin(currentUser);
+        LambdaQueryWrapper<SzUser> queryWrapper =
+                new LambdaQueryWrapper<>();
+        queryWrapper
+                .eq(SzUser::getEnabled, Constants.ENABLE);
+        if(StringUtils.isNotBlank(szUserSearchParam.getUsername())){
+            queryWrapper.like(SzUser::getUsername,szUserSearchParam.getUsername());
+        }
+
+        if(StringUtils.isNotBlank(szUserSearchParam.getAccountRole())){
+            queryWrapper.eq(SzUser::getAccountRole,szUserSearchParam.getAccountRole());
+        }
+        Page<SzUser> page = new Page<>(szUserSearchParam.getPageNo(), szUserSearchParam.getPageSize());
+        Page<SzUser> userPage = page(page,queryWrapper);
+        return PageHelper.convertPage(userPage,SzUserInfo::new);
+    }
+
+    @Override
+    public void updateLoginTime(String username) {
+        SzUser currentUser = selectEnableUserByUsername(username);
+        if(currentUser != null){
+            currentUser.setLastLoginTime(LocalDateTime.now());
+
+            updateById(currentUser);
+        }
+    }
+
+    @Override
+    public List<SzUser> selectByUsernameList(List<String> usernameList) {
+        if(usernameList == null || usernameList.isEmpty()){
+            return Collections.emptyList();
+        }
+        LambdaQueryWrapper<SzUser> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.in(SzUser::getUsername,usernameList)
+                .eq(SzUser::getEnabled,Constants.ENABLE);
         return list(queryWrapper);
     }
 

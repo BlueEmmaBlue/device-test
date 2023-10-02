@@ -3,10 +3,11 @@ package com.skinairvalve.sz.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -14,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author zw
- * @since 2023-09-18
+ * @since 2023-10-02
  */
 @TableName("sz_data_record")
 @ApiModel(value = "SzDataRecord对象", description = "")
@@ -25,10 +26,13 @@ public class SzDataRecord implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private Integer uploadUser;
+    @ApiModelProperty("上传用户")
+    private String uploadUser;
 
-    private Integer uploadDevice;
+    @ApiModelProperty("上传设备id")
+    private String uploadDeviceId;
 
+    @ApiModelProperty("上传时间")
     private LocalDateTime uploadTime;
 
     private Integer createId;
@@ -41,6 +45,15 @@ public class SzDataRecord implements Serializable {
 
     private String filePath;
 
+    @ApiModelProperty("同步状态,NOT_UPLOAD,UPLOAD")
+    private String uploadServerStatus;
+
+    @ApiModelProperty("上传设备类型")
+    private String uploadDeviceType;
+
+    @ApiModelProperty("部品序列号")
+    private String uploadSerialId;
+
     public Integer getId() {
         return id;
     }
@@ -49,20 +62,20 @@ public class SzDataRecord implements Serializable {
         this.id = id;
     }
 
-    public Integer getUploadUser() {
+    public String getUploadUser() {
         return uploadUser;
     }
 
-    public void setUploadUser(Integer uploadUser) {
+    public void setUploadUser(String uploadUser) {
         this.uploadUser = uploadUser;
     }
 
-    public Integer getUploadDevice() {
-        return uploadDevice;
+    public String getUploadDeviceId() {
+        return uploadDeviceId;
     }
 
-    public void setUploadDevice(Integer uploadDevice) {
-        this.uploadDevice = uploadDevice;
+    public void setUploadDeviceId(String uploadDeviceId) {
+        this.uploadDeviceId = uploadDeviceId;
     }
 
     public LocalDateTime getUploadTime() {
@@ -113,18 +126,45 @@ public class SzDataRecord implements Serializable {
         this.filePath = filePath;
     }
 
+    public String getUploadServerStatus() {
+        return uploadServerStatus;
+    }
+
+    public void setUploadServerStatus(String uploadServerStatus) {
+        this.uploadServerStatus = uploadServerStatus;
+    }
+
+    public String getUploadDeviceType() {
+        return uploadDeviceType;
+    }
+
+    public void setUploadDeviceType(String uploadDeviceType) {
+        this.uploadDeviceType = uploadDeviceType;
+    }
+
+    public String getUploadSerialId() {
+        return uploadSerialId;
+    }
+
+    public void setUploadSerialId(String uploadSerialId) {
+        this.uploadSerialId = uploadSerialId;
+    }
+
     @Override
     public String toString() {
         return "SzDataRecord{" +
             "id = " + id +
             ", uploadUser = " + uploadUser +
-            ", uploadDevice = " + uploadDevice +
+            ", uploadDeviceId = " + uploadDeviceId +
             ", uploadTime = " + uploadTime +
             ", createId = " + createId +
             ", createTime = " + createTime +
             ", updateId = " + updateId +
             ", updateTime = " + updateTime +
             ", filePath = " + filePath +
+            ", uploadServerStatus = " + uploadServerStatus +
+            ", uploadDeviceType = " + uploadDeviceType +
+            ", uploadSerialId = " + uploadSerialId +
         "}";
     }
 }

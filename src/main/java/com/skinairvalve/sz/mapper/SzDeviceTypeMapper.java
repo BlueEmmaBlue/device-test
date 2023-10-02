@@ -1,7 +1,7 @@
 package com.skinairvalve.sz.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.skinairvalve.sz.entity.SzDataRecord;
+import com.skinairvalve.sz.entity.SzDeviceType;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.skinairvalve.sz.entity.SzDataRecord;
  * @author zw
  * @since 2023-10-02
  */
-public interface SzDataRecordMapper extends BaseMapper<SzDataRecord> {
+public interface SzDeviceTypeMapper extends BaseMapper<SzDeviceType> {
 
 }

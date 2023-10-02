@@ -11,7 +11,7 @@
  Target Server Version : 80100
  File Encoding         : 65001
 
- Date: 24/09/2023 23:52:44
+ Date: 02/10/2023 17:00:41
 */
 
 SET NAMES utf8mb4;
@@ -23,22 +23,20 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `sz_data_record`;
 CREATE TABLE `sz_data_record` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `upload_user` int NOT NULL DEFAULT '0',
-  `upload_device` int NOT NULL,
-  `upload_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `upload_user` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '上传用户',
+  `upload_device_id` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '上传设备id',
+  `upload_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上传时间',
   `create_id` int NOT NULL DEFAULT '0',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_id` int NOT NULL DEFAULT '0',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `file_path` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `upload_server_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '同步状态,NOT_UPLOAD,UPLOAD',
+  `upload_device_type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '上传设备类型',
+  `upload_serial_id` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '部品序列号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- ----------------------------
--- Records of sz_data_record
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for sz_device
@@ -57,12 +55,25 @@ CREATE TABLE `sz_device` (
   `upper_threshold` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '阈值上限',
   `lower_threshold` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '阈值下限',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
--- Records of sz_device
+-- Table structure for sz_device_type
+-- ----------------------------
+DROP TABLE IF EXISTS `sz_device_type`;
+CREATE TABLE `sz_device_type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `device_type` varchar(255) NOT NULL DEFAULT '' COMMENT '设备类型code',
+  `device_type_name` varchar(255) NOT NULL DEFAULT '' COMMENT '设备类型name',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of sz_device_type
 -- ----------------------------
 BEGIN;
+-- 测试数据，需要删除
+INSERT INTO `sz_device_type` VALUES (1, 'device_0', 'device_0');
 COMMIT;
 
 -- ----------------------------
@@ -78,8 +89,9 @@ CREATE TABLE `sz_user` (
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_id` int NOT NULL DEFAULT '1' COMMENT '更新人',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
-  `account_role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'NORMAL' COMMENT '角色类型,NORMAL,ADMIN',
+  `account_role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'NORMAL' COMMENT '角色类型,NORMAL,ADMIN',
   `enabled` tinyint NOT NULL DEFAULT '1' COMMENT '是否启用',
+  `last_login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_username_uq` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -88,7 +100,7 @@ CREATE TABLE `sz_user` (
 -- Records of sz_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sz_user` VALUES (1, 'admin', 'admin', 'admin', 1, '2023-09-08 17:03:46', 1, '2023-09-08 17:03:46', 'ADMIN', 1);
+INSERT INTO `sz_user` VALUES (1, 'admin', 'admin', 'admin', 1, NOW(), 1, NOW(), 'ADMIN', 1, NOW());
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

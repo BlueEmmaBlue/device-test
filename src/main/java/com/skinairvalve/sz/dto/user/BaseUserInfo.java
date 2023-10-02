@@ -25,6 +25,8 @@ public class BaseUserInfo {
     private String accountRole;
 
     public BaseUserInfo(SzUser szUser){
-        BeanUtils.copyProperties(szUser,this);
+        if(szUser != null) {
+            BeanUtils.copyProperties(szUser, this);
+        }
     }
 }

@@ -14,6 +14,7 @@
         <result column="update_time" property="updateTime" />
         <result column="account_role" property="accountRole" />
         <result column="enabled" property="enabled" />
+        <result column="last_login_time" property="lastLoginTime"/>
     </resultMap>
 
 </mapper>

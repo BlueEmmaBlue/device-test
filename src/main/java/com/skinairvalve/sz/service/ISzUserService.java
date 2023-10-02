@@ -1,9 +1,11 @@
 package com.skinairvalve.sz.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.skinairvalve.sz.dto.user.SzUserInfo;
 import com.skinairvalve.sz.dto.user.SzUserInfoDto;
+import com.skinairvalve.sz.dto.user.SzUserSearchParam;
 import com.skinairvalve.sz.entity.SzUser;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 
@@ -28,4 +30,10 @@ public interface ISzUserService extends IService<SzUser> {
     boolean deleteUser(SzUser currentUser,String username);
 
     List<SzUser> allUser(SzUser szUser);
+
+    Page<SzUserInfo> searchUser(SzUser currentUser, SzUserSearchParam szUserSearchParam);
+
+    void updateLoginTime(String username);
+
+    List<SzUser> selectByUsernameList(List<String> usernameList);
 }
