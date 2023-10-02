@@ -1,9 +1,9 @@
 package com.skinairvalve.sz.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.skinairvalve.sz.entity.SzDataRecord;
 import com.skinairvalve.sz.mapper.SzDataRecordMapper;
 import com.skinairvalve.sz.service.ISzDataRecordService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

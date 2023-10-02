@@ -1,9 +1,9 @@
 package com.skinairvalve.sz.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.skinairvalve.sz.entity.SzDeviceType;
 import com.skinairvalve.sz.mapper.SzDeviceTypeMapper;
 import com.skinairvalve.sz.service.ISzDeviceTypeService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

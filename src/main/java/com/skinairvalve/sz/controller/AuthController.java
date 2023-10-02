@@ -2,7 +2,6 @@ package com.skinairvalve.sz.controller;
 
 import com.skinairvalve.sz.dto.ApiResult;
 import com.skinairvalve.sz.dto.user.LoginDto;
-import com.skinairvalve.sz.dto.user.SzUserInfoDto;
 import com.skinairvalve.sz.service.ISzUserService;
 import com.skinairvalve.sz.service.UserDetailService;
 import io.swagger.annotations.Api;

@@ -2,7 +2,7 @@ package com.skinairvalve.sz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.skinairvalve.sz.dto.device.AddDeviceInfo;
 import com.skinairvalve.sz.dto.device.BaseDeviceInfo;
 import com.skinairvalve.sz.dto.device.SzDeviceSearchParam;
@@ -10,7 +10,6 @@ import com.skinairvalve.sz.dto.device.UpdateDeviceInfo;
 import com.skinairvalve.sz.entity.SzDevice;
 import com.skinairvalve.sz.mapper.SzDeviceMapper;
 import com.skinairvalve.sz.service.ISzDeviceService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.skinairvalve.sz.service.ISzDeviceTypeService;
 import com.skinairvalve.sz.utils.PageHelper;
 import lombok.extern.slf4j.Slf4j;

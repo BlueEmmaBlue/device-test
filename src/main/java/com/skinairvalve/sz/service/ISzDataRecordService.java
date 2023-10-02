@@ -1,7 +1,7 @@
 package com.skinairvalve.sz.service;
 
-import com.skinairvalve.sz.entity.SzDataRecord;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.skinairvalve.sz.entity.SzDataRecord;
 
 /**
  * <p>

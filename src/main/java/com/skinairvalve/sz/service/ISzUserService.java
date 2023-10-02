@@ -1,14 +1,12 @@
 package com.skinairvalve.sz.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.skinairvalve.sz.dto.user.SzUserInfo;
 import com.skinairvalve.sz.dto.user.SzUserInfoDto;
 import com.skinairvalve.sz.dto.user.SzUserSearchParam;
 import com.skinairvalve.sz.entity.SzUser;
-import com.baomidou.mybatisplus.extension.service.IService;
 
-import java.util.Collection;
 import java.util.List;
 
 /**

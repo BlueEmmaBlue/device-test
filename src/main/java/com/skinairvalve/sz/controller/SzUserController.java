@@ -1,16 +1,13 @@
 package com.skinairvalve.sz.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.skinairvalve.sz.dto.ApiResult;
 import com.skinairvalve.sz.dto.user.SzUserInfo;
 import com.skinairvalve.sz.dto.user.SzUserInfoDto;
 import com.skinairvalve.sz.dto.user.SzUserSearchParam;
-import com.skinairvalve.sz.entity.SzUser;
 import com.skinairvalve.sz.service.ISzUserService;
 import com.skinairvalve.sz.service.UserDetailService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;

@@ -1,7 +1,7 @@
 package com.skinairvalve.sz.mapper;
 
-import com.skinairvalve.sz.entity.SzDeviceType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.skinairvalve.sz.entity.SzDeviceType;
 
 /**
  * <p>

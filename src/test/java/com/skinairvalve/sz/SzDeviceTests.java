@@ -18,7 +18,6 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 /**
- * @author zhangwei zhangwei06@kuaishou.com
  * @create on 2023/10/2-3:22 PM
  */
 @Slf4j

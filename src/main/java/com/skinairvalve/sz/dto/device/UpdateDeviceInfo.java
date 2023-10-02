@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @author zhangwei zhangwei06@kuaishou.com
  * @create on 2023/10/2-3:01 PM
  */
 @Data

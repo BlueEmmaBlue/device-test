@@ -1,7 +1,7 @@
 package com.skinairvalve.sz.service;
 
-import com.skinairvalve.sz.entity.SzDeviceType;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.skinairvalve.sz.entity.SzDeviceType;
 
 import java.util.Map;
 

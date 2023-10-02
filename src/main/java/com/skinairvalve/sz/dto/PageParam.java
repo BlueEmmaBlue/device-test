@@ -3,7 +3,6 @@ package com.skinairvalve.sz.dto;
 import lombok.Data;
 
 /**
- * @author zhangwei zhangwei06@kuaishou.com
  * @create on 2023/10/2-2:05 PM
  */
 @Data
