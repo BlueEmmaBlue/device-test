@@ -7,7 +7,6 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @author zhangwei zhangwei06@kuaishou.com
  * @create on 2023/10/2-4:21 PM
  */
 @Data

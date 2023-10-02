@@ -16,7 +16,6 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 /**
- * @author zhangwei zhangwei06@kuaishou.com
  * @create on 2023/10/2-4:42 PM
  */
 @Slf4j

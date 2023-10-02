@@ -9,7 +9,6 @@ import com.skinairvalve.sz.dto.device.UpdateDeviceInfo;
 import com.skinairvalve.sz.entity.SzDevice;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
